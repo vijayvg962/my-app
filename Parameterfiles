@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    parameters {
+  choice choices: ['master', 'dev', 'develop', 'qa'], description: 'choose the branch to build', name: 'branchName'
+  string description: 'choose the git repo to build', name: 'giturl'
+}
+    stages{
+        stage("git checkout"){
+            steps{
+                //echo params.git url
+                //echo params.branch Name
+            
+                git url:params.giturl,branch:params.branchName
+            }
+        }
+    }
+}
