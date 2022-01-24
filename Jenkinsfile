@@ -4,7 +4,7 @@ pipeline{
         pollSCM '* * * * *'
     }
     stages{
-        stage("maven build"){
+        stage("maven"){
             when{
                 branch "develop"
             }
