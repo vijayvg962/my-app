@@ -4,9 +4,17 @@ pipeline{
         pollSCM '* * * * *'
     }
     stages{
-        stage("maven build"){
+        stage("maven"){
             when{
                 branch "develop"
+            }
+            steps{
+                sh "mvn package"
+            }
+        }
+        stage("maven build"){
+            when{
+                branch "qa"
             }
             steps{
                 sh "mvn package"
@@ -46,3 +54,4 @@ pipeline{
         }
     }
 }
+
